@@ -1,0 +1,89 @@
+<div class="jumbotron">
+    <h1>UpStock Product</h1>
+    <hr>
+    <form [formGroup]="UpstockForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="view">Product ID</label>
+                <input type="number" formControlName="product_id" class="form-control" placeholder="Product ID" (keyup)="BindProduct($event)">
+                
+            </div>
+            <div class="form-group col-md-6">
+                <label for="view">Category Name</label>
+                <input type="text" formControlName="category_name" class="form-control" placeholder="Category name" readonly>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="view">Brand Name</label>
+                <input class="form-control" formControlName="brand_name" type="text" name="view" id="view" placeholder="Brand name" readonly>
+            </div>
+           <div class="form-group col-md-6">
+                <label for="view">Product Name</label>
+                <input type="text" class="form-control" formControlName="product_name" name="" id="" placeholder="Product name" readonly>
+           </div>
+        </div>
+        <div class="form-row mb-4">
+            <div class="form-gruop col-md-6">
+                <label for="view">Available Quantity</label>
+                <input type="number" formControlName="available_quantity" name="" id="" class="form-control" placeholder="Available Quantity" readonly>
+            </div>
+           <div class="form-gruop col-md-6">
+               <label for="view">UPStock Quantity</label>
+               <input type="number" formControlName="upstock_quantity" name="" id="" class="form-control" placeholder="Upstock Quantity">
+           </div>
+        </div>
+           <div class="form-row">
+        <div class="form-group col-md-3">
+            <button type="submit" class="btn btn-primary" >Add Stock</button>
+        </div>
+        </div>
+    </form>
+        <h2>UpStock Details</h2>
+        <hr>
+        <div class="row mb-4">
+
+            <div class="col-md-12">
+              <div class="card border-0 rounded-0">
+                <div class="card-title mb-1 p-3">
+                  <!-- <h5>Category Name</h5> -->
+                  
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive-md">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">UpStock</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let in of upstock;index as i;">
+                          <td>{{in.products[0].product.product_id}}</td>
+                          <td>{{in.products[0].product.product_name}}</td>
+                          <td>{{in.upstock_quantity}}</td>
+                          <td>{{in.products[0].product.quantity}}</td>
+                          <td>{{in.upstock_date}}</td>
+                          
+                        </tr>
+                        
+                      
+                        
+                        
+                      </tbody>
+                    </table>
+                  </div>
+        
+                </div>
+              
+        
+            </div>
+          </div>
+          
+      </div>
+      
+</div>

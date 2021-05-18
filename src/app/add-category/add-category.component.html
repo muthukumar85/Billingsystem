@@ -1,0 +1,66 @@
+<div class="jumbotron">
+    <h1>Add Category</h1>
+    <hr>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <!-- <label for="view">Cashier Name</label> -->
+                <input class="form-control" formControlName="category_name" type="text" name="view" id="view" placeholder="category name">
+            </div>
+            <div class="form-group col-md-3">
+                <button *ngIf="but" type="submit" class="btn btn-primary" >Add category</button>
+                <button *ngIf="!but" type="button" (click)="EditCategory()" class="btn btn-primary" >Edit category</button>
+            </div>
+
+        </div>
+    </form>
+    <h2>Details</h2>
+    <hr>
+    <div class="row mb-4">
+
+        <div class="col-md-12">
+          <div class="card border-0 rounded-0">
+            <div class="card-title mb-1 p-3">
+              <h5>Category table</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive-md">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">S.no</th>
+                      <th scope="col">Category Name</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let in of user;index as i;">
+                      <td>{{i+1}}</td>
+                      <td>{{in.category_name}}</td>
+                      <td>
+                        <span class="badge badge-primary rounded-0 p-1">Fixed</span>
+                      </td>
+                      <td>
+                        <a (click)="editCat(in._id,in.category_name)" class="btn btn-sm btn-outline-lightning rounded-0 mr-2 ">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a (click)="deleteCat(in._id)" class="btn btn-sm btn-outline-lightning rounded-0">
+                          <i class="fa fa-trash" style="color: black;"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+    
+            </div>
+          </div>
+    
+        </div>
+      </div>
+</div>

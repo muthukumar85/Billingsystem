@@ -1,0 +1,96 @@
+<div class="jumbotron">
+    <h1>Add Product</h1>
+    <hr>
+    <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="view">Category Name</label>
+                <select class="form-control" formControlName="category_name" placeholder="category name">
+                   <option  *ngFor="let cat of user;index as i;" value="{{cat._id}}">{{cat.category_name}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="view">Brand Name</label>
+                <input class="form-control" formControlName="brand_name" type="text" name="view" id="view" placeholder="Brand name">
+            </div>
+        </div>
+        <div class="form-row">
+           <div class="form-group col-md-6">
+                <label for="view">Product Name</label>
+                <input type="text" class="form-control" formControlName="product_name" name="" id="" placeholder="Product name">
+           </div>
+           <div class="form-gruop col-md-6">
+               <label for="view">Color</label>
+               <input type="text" formControlName="color" name="" id="" class="form-control" placeholder="Color">
+           </div>
+        </div>
+        <div class="form-row">
+            <div class="form-gruop col-md-6">
+                <label for="view">Quantity</label>
+                <input type="number" formControlName="quantity" name="" id="" class="form-control" placeholder="Quantity">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="view">MRP</label>
+                <input type="number" formControlName="mrp" name="" id="" class="form-control" placeholder="MRP">
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <button *ngIf="but" type="submit" class="btn btn-primary" >Add Product</button>
+            <button *ngIf="!but" type="button" (click)="EditProduct()" class="btn btn-primary" >Edit product</button>
+        </div>
+    </form>
+        <h2>Product Details</h2>
+        <hr>
+        <div class="row mb-4" *ngFor="let cat of pro;">
+
+            <div class="col-md-12">
+              <div class="card border-0 rounded-0">
+                <div class="card-title mb-1 p-3">
+                  <h5>Category Name</h5>
+                  <h4>{{cat.category_name}}</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive-md">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                            <th scope="col">Brand Name</th>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">MRP</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let in of cat.products;index as i;">
+                          <td>{{in.brand_name}}</td>
+                          <td>{{in.variants.product_id}}</td>
+                          <td>{{in.variants.product_name}}</td>
+                          <td>{{in.variants.color}}</td>
+                          <td>{{in.variants.quantity}}</td>
+                          <td>{{in.variants.mrp}}</td>
+                          <td>
+                            <a (click)="deletePro(cat._id,in._id)" class="btn btn-sm btn-outline-lightning rounded-0">
+                              <i class="fa fa-trash" style="color: black;"></i>
+                            </a>
+                          </td>
+                        </tr>
+                        
+                      
+                        
+                        
+                      </tbody>
+                    </table>
+                  </div>
+        
+                </div>
+              
+        
+            </div>
+          </div>
+          
+      </div>
+      
+</div>

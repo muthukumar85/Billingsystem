@@ -1,0 +1,69 @@
+<div class="jumbotron">
+    <h1>View User Info</h1>
+    <hr>
+    <form [formGroup]="cashierForm" (ngSubmit)="onSubmit($event)">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <!-- <label for="view">Cashier Name</label> -->
+                <input class="form-control" formControlName="cashier_name" type="text" name="view" id="view" placeholder="cashier name">
+            </div>
+            <div class="form-group col-md-3">
+                <button type="submit" class="btn btn-primary" >Search</button>
+            </div>
+
+        </div>
+    </form>
+    <h2>Details</h2>
+    <hr>
+    <div class="row mb-4">
+
+        <div class="col-md-12">
+          <div class="card border-0 rounded-0">
+            <div class="card-title mb-1 p-3">
+              <h5>Basic table</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive-md">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                     
+                      <th scope="col">Name</th>
+                      <th scope="col">Mobile</th>
+                      <th scope="col">email</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let in of user">
+                    
+                      <td>{{in.username}}</td>
+                      <td>{{in.mobile}}</td>
+                      <td>{{in.email}}</td>
+                      <td>
+                        <span class="badge badge-primary rounded-0 p-1">Fixed</span>
+                      </td>
+                      <td>
+                        <a class="btn btn-sm btn-outline-lightning rounded-0 mr-2 ">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a class="btn btn-sm btn-outline-lightning rounded-0">
+                          <i class="fa fa-trash" style="color: black;"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+    
+            </div>
+          </div>
+    
+        </div>
+      </div>
+</div>
